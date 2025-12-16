@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Quarto Gioco è...</title> 
+    <style>
+        /* CSS per lo stile e l'animazione */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #000;
+            color: #fff;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+            transition: background-color 0.5s ease;
+        }
+
+        #content {
+            text-align: center;
+            font-size: 3em;
+            position: relative;
+            z-index: 2;
+        }
+
+        #initial-text {
+            transition: opacity 0.5s ease-out;
+        }
+
+        /* Stile specifico per il testo rivelato (FALL GUYS) */
+        .reveal-text {
+            font-size: 4em;
+            color: #ffde00; /* Giallo brillante Fall Guys */
+            text-shadow: 0 0 15px #ff69b4, 0 0 30px #00c0ff; /* Ombra Rosa e Azzurra */
+            opacity: 0; /* Inizialmente nascosto */
+            position: absolute;
+            top: 50%; 
+            left: 50%;
+            transform: translate(-50%, -50%);
+            transition: opacity 1s ease 0.5s;
+            white-space: nowrap;
+        }
+
+        .explosion {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            /* L'esplosione usa colori vivaci */
+            background: radial-gradient(circle, rgba(255, 255, 0, 0.9) 0%, rgba(255, 105, 180, 0.7) 50%, rgba(0, 192, 255, 0) 70%);
+            opacity: 0;
+            transform: scale(0);
+            transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="content">
+        <span id="initial-text">Il quarto gioco è.....</span> 
+    </div>
+
+    <div id="explosion-effect" class="explosion"></div>
+    
+    <span id="reveal-text" class="reveal-text">FALL GUYS</span>
+
+
+    <script>
+        // JavaScript per la logica dell'animazione
+        document.addEventListener('DOMContentLoaded', () => {
+            const initialText = document.getElementById('initial-text');
+            const revealText = document.getElementById('reveal-text');
+            const explosionEffect = document.getElementById('explosion-effect');
+            
+            const DELAY_BEFORE_EXPLOSION = 3000; // 3 secondi
+            const EXPLOSION_DURATION = 150; // Durata del flash
+            const DELAY_BEFORE_REVEAL = 500; // Mezzo secondo dopo il flash
+
+            // Passo 1: Attendere il tempo iniziale
+            setTimeout(() => {
+                
+                // --- FASE 2: ESPLOSIONE ---
+                
+                // 1. Nascondere il testo iniziale
+                initialText.style.opacity = '0'; 
+
+                // 2. Flash Bianco su tutto lo schermo e attivazione dell'esplosione
+                document.body.style.backgroundColor = '#fff';
+                explosionEffect.style.opacity = '1';
+                explosionEffect.style.transform = 'scale(10)'; 
+                
+                // 3. Ritorno rapido alla normalità dopo il flash
+                setTimeout(() => {
+                    document.body.style.backgroundColor = '#000';
+                    explosionEffect.style.opacity = '0';
+                    explosionEffect.style.transform = 'scale(0)';
+                }, EXPLOSION_DURATION); 
+
+                // --- FASE 3: RIVELAZIONE ---
+
+                // 4. Mostrare il testo "FALL GUYS"
+                setTimeout(() => {
+                    revealText.style.opacity = '1';
+
+                }, EXPLOSION_DURATION + DELAY_BEFORE_REVEAL); 
+                
+            }, DELAY_BEFORE_EXPLOSION);
+
+        });
+    </script>
+
+</body>
+</html>
