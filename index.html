@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Il Quarto Gioco è...</title> 
+    <title>Il Quinto Gioco è...</title> 
     <style>
         /* CSS per lo stile e l'animazione */
         body {
@@ -12,7 +12,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-color: #000;
+            background-color: #000; /* Sfondo nero iniziale */
             color: #fff;
             font-family: 'Arial', sans-serif;
             overflow: hidden;
@@ -30,11 +30,11 @@
             transition: opacity 0.5s ease-out;
         }
 
-        /* Stile specifico per il testo rivelato (FALL GUYS) */
+        /* Stile specifico per il testo rivelato (RAINBOW SIX) */
         .reveal-text {
             font-size: 4em;
-            color: #ffde00; /* Giallo brillante Fall Guys */
-            text-shadow: 0 0 15px #ff69b4, 0 0 30px #00c0ff; /* Ombra Rosa e Azzurra */
+            color: #00bfff; /* Azzurro brillante, tipico logo Rainbow Six */
+            text-shadow: 0 0 10px #00a0e0, 0 0 20px #222, 0 0 30px #ff8c00; /* Azzurro chiaro, grigio scuro, arancione */
             opacity: 0; /* Inizialmente nascosto */
             position: absolute;
             top: 50%; 
@@ -48,8 +48,8 @@
             position: fixed;
             width: 100%;
             height: 100%;
-            /* L'esplosione usa colori vivaci */
-            background: radial-gradient(circle, rgba(255, 255, 0, 0.9) 0%, rgba(255, 105, 180, 0.7) 50%, rgba(0, 192, 255, 0) 70%);
+            /* L'esplosione usa colori più "bellici": arancione, giallo, grigio */
+            background: radial-gradient(circle, rgba(255, 165, 0, 0.9) 0%, rgba(255, 215, 0, 0.7) 50%, rgba(60, 60, 60, 0) 70%);
             opacity: 0;
             transform: scale(0);
             transition: opacity 0.1s ease-in-out, transform 0.1s ease-in-out;
@@ -60,12 +60,12 @@
 <body>
 
     <div id="content">
-        <span id="initial-text">Il quarto gioco è.....</span> 
+        <span id="initial-text">Il quinto gioco è.....</span> 
     </div>
 
     <div id="explosion-effect" class="explosion"></div>
     
-    <span id="reveal-text" class="reveal-text">FALL GUYS</span>
+    <span id="reveal-text" class="reveal-text">RAINBOW SIX</span>
 
 
     <script>
@@ -88,7 +88,7 @@
                 initialText.style.opacity = '0'; 
 
                 // 2. Flash Bianco su tutto lo schermo e attivazione dell'esplosione
-                document.body.style.backgroundColor = '#fff';
+                document.body.style.backgroundColor = '#fff'; // Flash bianco
                 explosionEffect.style.opacity = '1';
                 explosionEffect.style.transform = 'scale(10)'; 
                 
@@ -101,7 +101,7 @@
 
                 // --- FASE 3: RIVELAZIONE ---
 
-                // 4. Mostrare il testo "FALL GUYS"
+                // 4. Mostrare il testo "RAINBOW SIX"
                 setTimeout(() => {
                     revealText.style.opacity = '1';
 
@@ -113,4 +113,8 @@
     </script>
 
 </body>
+</html>
+
+</body>
+
 </html>
